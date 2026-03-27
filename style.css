@@ -1,0 +1,563 @@
+/* Timeless Elegance Styles for Habibi Flowers */
+:root {
+    --primary-green: #2F4F4F; /* Deep Emerald/Forest */
+    --secondary-pink: #E6B9B9; /* Soft Blush/Rose */
+    --background-linen: #FDF5E6; /* Creamy, warm linen */
+    --text-charcoal: #3A3A3A; /* Softer dark text */
+    --accent-gold: #D4AF37; /* Muted Gold for highlights */
+    --cta-sage: #5A7D7C; /* Richer sage for buttons */
+    --white: #ffffff;
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-charcoal);
+    line-height: 1.7;
+    background-color: var(--background-linen);
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    color: var(--primary-green);
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+h1 { font-size: 3.5em; line-height: 1.2; }
+h2 { font-size: 2.8em; }
+h3 { font-size: 1.6em; }
+
+a {
+    text-decoration: none;
+    color: var(--primary-green);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-pink);
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 14px 30px;
+    border-radius: 0; /* Modern, clean edges */
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.btn-primary {
+    background-color: var(--cta-sage);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-green);
+    color: var(--white);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-green);
+    border: 2px solid var(--primary-green);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-green);
+    color: var(--white);
+}
+
+/* Sticky Header with Smooth Transition */
+.main-header {
+    background-color: var(--background-linen);
+    padding: 20px 0; /* Reduced initial padding */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    transition: all 0.4s ease; /* Makes the shrinking look smooth */
+}
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; /* Tighter gap for a cleaner look */
+}
+
+.logo-banner img {
+    height: 140px; /* Slightly smaller starting height for better scrolling */
+    width: auto;
+    transition: height 0.4s ease; /* Shrinks the image specifically */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 60px; /* Wider gap for that high-end look */
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    /* This specific color is usually better than pure black for luxury sites */
+    color: #2F3E3E; 
+    
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700; /* Bold weight prevents the "fuzzy" edge */
+    font-size: 14px; /* Fixed pixel size is often sharper than 'rem' for nav */
+    text-transform: uppercase;
+    
+    /* This creates the "Shop Collection" spacing without distortion */
+    letter-spacing: 3px; 
+    
+    /* THE FIXES FOR PIXELATION: */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    
+    /* Ensure no weird scaling is happening */
+    display: inline-block;
+    line-height: 1.2;
+}
+
+.nav-links a:hover {
+    color: var(--accent-gold);
+}/* Smooth Scroll Behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Clean Section Spacing */
+section {
+    padding: 100px 0;
+}
+/* Hero Section */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 85vh; /* Larger hero for impact */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    filter: brightness(0.7); /* Darken image for text readability */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    padding: 20px;
+}
+
+.hero-content h1 {
+    font-size: 4.5em; /* Bigger font for hero */
+    margin-bottom: 25px;
+    color: var(--white);
+    text-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+.hero-content p {
+    font-size: 1.6em;
+    margin-bottom: 40px;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* About Us Section (Two-Column with image) */
+.about-us-section {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    padding: 100px 0;
+    background-color: var(--white); /* White card background */
+    margin-top: 50px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+}
+
+.about-content {
+    flex: 1;
+    padding-left: 50px; /* Some spacing from the edge */
+}
+
+.about-content h2 {
+    color: var(--primary-green);
+    margin-bottom: 25px;
+}
+
+.about-content p {
+    margin-bottom: 25px;
+    font-size: 1.1em;
+}
+
+.about-image-wrapper {
+    flex: 1;
+    position: relative; /* For overlapping effect if desired */
+    padding-right: 50px; /* Spacing from edge */
+}
+
+.about-image-wrapper img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+/* Featured Products (Editorial Grid) */
+.featured-products-section {
+    padding: 100px 0;
+    text-align: center;
+}
+
+.featured-products-section h2 {
+    margin-bottom: 60px;
+    color: var(--primary-green);
+    font-size: 2.8em;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.product-card {
+    background-color: var(--white);
+    border-radius: 5px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.product-card img {
+    width: 100%;
+    height: 380px; /* Consistent image height */
+    object-fit: cover;
+    display: block; /* Remove extra space below image */
+}
+
+.product-card-content {
+    padding: 25px;
+}
+
+.product-card-content h3 {
+    color: var(--primary-green);
+    margin-bottom: 8px;
+    font-size: 1.5em;
+}
+
+.product-card-content p {
+    color: var(--accent-gold);
+    font-size: 1.2em;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+/* Call to Action Section */
+.call-to-action-section {
+    background-color: var(--primary-green); /* Use the deep green here */
+    color: var(--white);
+    padding: 100px 0;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.cta-content h2 {
+    color: var(--white);
+    font-size: 3.5em;
+    margin-bottom: 25px;
+}
+
+.cta-content p {
+    font-size: 1.5em;
+    margin-bottom: 45px;
+    opacity: 0.9;
+}
+
+.cta-content .btn-primary {
+    background-color: var(--accent-gold);
+    color: var(--primary-green);
+}
+
+.cta-content .btn-primary:hover {
+    background-color: #e5bf4f; /* Slightly darker gold */
+}
+
+/* Footer */
+.main-footer {
+    background-color: var(--text-charcoal);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 70px 0 30px;
+    font-size: 0.95em;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--background-linen);
+    flex-basis: 100%;
+    margin-bottom: 25px;
+}
+
+.footer-links, .footer-social, .footer-contact {
+    flex: 1;
+    min-width: 220px;
+}
+
+.footer-links h4, .footer-social h4, .footer-contact h4 {
+    color: var(--secondary-pink);
+    margin-bottom: 20px;
+    font-size: 1.3em;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links a, .footer-contact p {
+    color: rgba(255, 255, 255, 0.6);
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--background-linen);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .navbar {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .hero-content h1 { font-size: 3.5em; }
+    .hero-content p { font-size: 1.3em; }
+    .about-us-section { flex-direction: column; text-align: center; }
+    .about-content, .about-image-wrapper { padding: 0 20px; }
+    .product-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+}
+
+@media (max-width: 768px) {
+    h1 { font-size: 2.8em; }
+    h2 { font-size: 2.2em; }
+    .nav-links { gap: 20px; flex-wrap: wrap; justify-content: center; }
+    .hero-section { height: 70vh; }
+    .hero-content h1 { font-size: 2.8em; }
+    .hero-content p { font-size: 1.1em; }
+    .about-us-section { padding: 60px 0; }
+    .featured-products-section { padding: 60px 0; }
+    .product-card img { height: 300px; }
+    .footer-content { flex-direction: column; text-align: center; }
+    .footer-links, .footer-social, .footer-contact { margin-bottom: 25px; }
+    .logo-banner img { height: 70px; }
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 2.2em; }
+    h2 { font-size: 1.8em; }
+    .hero-section { height: 60vh; }
+    .hero-content h1 { font-size: 2.2em; }
+    .hero-content p { font-size: 1em; }
+    .btn { padding: 12px 25px; font-size: 0.75em; }
+    .logo-banner img { height: 60px; }
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Force 3 columns for that luxury look */
+    gap: 30px;
+    padding-bottom: 80px;
+}
+
+@media (max-width: 900px) {
+    .product-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+    .product-grid { grid-template-columns: 1fr; }
+}
+
+.product-card img {
+    width: 100%;
+    aspect-ratio: 4 / 5; /* This keeps all your b1-b12 images the exact same shape */
+    object-fit: cover;
+}
+
+/* Import Bold, Luxury Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Montserrat:wght@300;400;700&display=swap');
+
+:root {
+    --primary-green: #2F4F4F;
+    --accent-gold: #D4AF37;
+    --text-charcoal: #1a1a1a; /* Darker for better contrast */
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-charcoal);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Big, Bold Editorial Headings */
+h1, h2, h3 {
+    font-family: 'Bodoni Moda', serif;
+    font-weight: 800; /* Maximum boldness */
+    text-transform: uppercase;
+    letter-spacing: -1px; /* Tighter spacing on big headers looks modern */
+    line-height: 1;
+    color: var(--primary-green);
+}
+
+h1 {
+    font-size: clamp(3rem, 8vw, 6rem); /* Scales perfectly from mobile to desktop */
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    letter-spacing: -0.5px;
+}
+
+/* Navigation - Clean & Spaced */
+.nav-links a {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 4px; /* Wide spacing contrasts with tight headers */
+    text-transform: uppercase;
+    opacity: 1;
+}
+
+/* Product Titles */
+.product-card h3 {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 1.5rem;
+    text-transform: none; /* Keeps it elegant */
+    letter-spacing: 0;
+    margin-top: 15px;
+}
+
+.price {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: var(--accent-gold);
+    letter-spacing: 1px;
+}
+
+/* Shop Page Specifics */
+.shop-intro {
+    text-align: center;
+    padding: 80px 0 40px;
+}
+
+.shop-intro .subtitle {
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.7rem;
+    color: var(--accent-gold);
+    margin-bottom: 10px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 across looks high-end */
+    gap: 50px 30px; /* More vertical space between rows */
+    margin-bottom: 100px;
+}
+
+.product-card {
+    text-align: center;
+    transition: opacity 0.3s ease;
+}
+
+.product-card:hover {
+    opacity: 0.8;
+}
+
+.product-card .image-container {
+    overflow: hidden;
+    margin-bottom: 20px;
+    background-color: #f4f4f4; /* Placeholder color while loading */
+}
+
+.product-card img {
+    width: 100%;
+    aspect-ratio: 4 / 5; /* Very trendy editorial ratio */
+    object-fit: cover;
+    display: block;
+}
+
+.product-info h3 {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+    text-transform: none; /* Keeps the Bodoni font looking elegant */
+    letter-spacing: 0;
+}
+
+.product-info .price {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+}
+
+/* Fix for mobile stretching */
+@media (max-width: 800px) {
+    .product-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 500px) {
+    .product-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 3rem; }
+}

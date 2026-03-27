@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You | Habibi Flowers</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        .success-card {
+            background: white;
+            padding: 60px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+            max-width: 600px;
+            margin: 100px auto;
+        }
+        .order-number {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background: #fcfaf8;
+            border: 1px dashed #B8860B;
+            font-family: 'Montserrat';
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: #B8860B;
+        }
+    </style>
+</head>
+<body style="background-color: #fcfaf8;">
+
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="logo-banner">
+                <a href="index.html"><img src="logo.png" alt="Habibi Flowers"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop Collection</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html" id="nav-bag">Bag (0)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="success-card">
+            <div style="font-size: 3rem; color: #2F4F4F; margin-bottom: 20px;">🌸</div>
+            <h1 style="font-family: 'Cormorant Garamond'; font-size: 3.5rem; font-weight: 400; line-height: 1;">Your blooms are <br>on the way.</h1>
+            
+            <div class="order-number">ORDER #<span id="order-id">HB-8291</span></div>
+            
+            <p style="font-family: 'Montserrat'; font-weight: 300; line-height: 1.8; color: #555; margin-bottom: 40px;">
+                Thank you for choosing Habibi Flowers. We are currently hand-selecting the freshest stems for your arrangement. You will receive a confirmation email shortly.
+            </p>
+
+            <a href="index.html" style="display: inline-block; padding: 18px 40px; background: #2F4F4F; color: white; text-decoration: none; font-family: 'Montserrat'; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; border-radius: 4px;">
+                Return Home
+            </a>
+        </div>
+    </main>
+
+    <script>
+        // 1. Generate a random order number for flair
+        const randomID = Math.floor(1000 + Math.random() * 9000);
+        document.getElementById('order-id').innerText = `HB-${randomID}`;
+
+        // 2. Clear the cart since the order is "placed"
+        localStorage.removeItem('habibiCart');
+
+        // 3. Update the Nav Bag count to 0
+        document.getElementById('nav-bag').innerText = "Bag (0)";
+    </script>
+</body>
+</html>

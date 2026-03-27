@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Bouquet Bag | Habibi Flowers</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body style="background-color: #fcfaf8;">
+
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="logo-banner">
+                <a href="index.html"><img src="logo.png" alt="Habibi"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop Collection</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html" style="color: #B8860B; font-weight: 600;">Bag</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container" style="max-width: 800px; margin: 60px auto; padding: 0 20px;">
+        <h1 style="font-family: 'Cormorant Garamond', serif; font-size: 3rem; text-align: center; margin-bottom: 40px;">Your Bouquet Bag</h1>
+        
+        <div id="cart-items" style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+        </div>
+
+        <div id="cart-summary" style="margin-top: 30px; text-align: right; display: none; font-family: 'Montserrat', sans-serif;">
+            
+            <div style="margin-bottom: 30px; text-align: left; background: #fff; padding: 20px; border-radius: 8px; border: 1px solid #eee;">
+                <label style="display: block; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; color: #2F4F4F;">Requested Delivery Date</label>
+                <input type="date" id="delivery-date" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-family: 'Montserrat'; color: #555;">
+                <p style="font-size: 0.7rem; color: #888; margin-top: 8px;">* Deliveries available Monday — Saturday.</p>
+            </div>
+
+            <div style="margin-bottom: 25px;">
+                <input type="text" id="promo-input" placeholder="Promo Code" style="padding: 10px; border: 1px solid #eee; font-size: 0.8rem; width: 150px; border-radius: 4px;">
+                <button onclick="applyPromo()" style="padding: 10px 15px; background: #2F4F4F; color: white; border: none; font-size: 0.7rem; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; border-radius: 4px;">Apply</button>
+                
+                <div id="promo-status" style="margin-top: 10px; display: none;">
+                    <span id="promo-msg" style="font-size: 0.75rem; font-weight: 600;"></span>
+                    <button onclick="removePromo()" style="background: none; border: none; color: #888; text-decoration: underline; font-size: 0.7rem; cursor: pointer; margin-left: 10px;">Remove</button>
+                </div>
+            </div>
+
+            <div style="display: inline-block; min-width: 300px; border-top: 1px solid #eee; padding-top: 20px;">
+                <div style="display: flex; justify-content: space-between; margin: 10px 0; font-size: 0.9rem; color: #666;">
+                    <span>Subtotal</span>
+                    <span id="display-subtotal">$0.00</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin: 10px 0; font-size: 0.9rem; color: #666;">
+                    <span>Delivery Fee</span>
+                    <span>$15.00</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin: 10px 0; font-size: 0.9rem; color: #666;">
+                    <span>Estimated Tax (8%)</span>
+                    <span id="display-tax">$0.00</span>
+                </div>
+                <div id="discount-row" style="display: none; justify-content: space-between; margin: 10px 0; font-size: 0.9rem; color: #2F4F4F; font-weight: 600;">
+                    <span>Discount</span>
+                    <span id="display-discount">-$0.00</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin: 20px 0 10px 0; font-size: 1.5rem; font-weight: 600; color: #333;">
+                    <span>Total</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+            </div>
+            
+            <br>
+            <button onclick="validateAndCheckout()" style="margin-top: 10px; padding: 22px 50px; background: #2F4F4F; color: white; border: none; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; font-weight: 600; border-radius: 4px; width: 100%;">
+                Complete Order
+            </button>
+            
+            <p style="margin-top: 15px;"><a href="shop.html" style="color: #555; font-size: 0.8rem; text-decoration: none; border-bottom: 1px solid #ccc;">Continue Shopping</a></p>
+        </div>
+
+        <div id="empty-msg" style="text-align: center; padding: 100px 0; display: none;">
+            <p style="font-family: 'Montserrat'; opacity: 0.7; margin-bottom: 20px;">Your bag is currently empty.</p>
+            <a href="shop.html" style="color: #2F4F4F; font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; text-decoration: none;">Go find some blooms</a>
+        </div>
+    </main>
+
+    <script>
+        let discount = 0;
+        const DELIVERY_FEE = 15.00;
+        const TAX_RATE = 0.08;
+
+        function setupDatePicker() {
+            const dateInput = document.getElementById('delivery-date');
+            if(dateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.setAttribute('min', today);
+            }
+        }
+
+        function displayCart() {
+            const cart = JSON.parse(localStorage.getItem('habibiCart')) || [];
+            const container = document.getElementById('cart-items');
+            const emptyMsg = document.getElementById('empty-msg');
+            const summary = document.getElementById('cart-summary');
+            let subtotal = 0;
+
+            container.innerHTML = '';
+
+            if (cart.length > 0) {
+                emptyMsg.style.display = 'none';
+                summary.style.display = 'block';
+                container.style.display = 'block';
+
+                cart.forEach((item, index) => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.style = "border-bottom: 1px solid #eee; padding: 20px 0;";
+                    const imageSrc = item.image || item.img || 'placeholder.png';
+                    const noteHTML = item.note ? `<div style="margin-top: 10px; padding: 10px; background: #f9f9f9; border-left: 2px solid #2F4F4F; font-style: italic; font-size: 0.85rem; color: #666;">"${item.note}"</div>` : '';
+
+                    itemDiv.innerHTML = `
+                        <div style="display: flex; align-items: center; gap: 20px;">
+                            <img src="${imageSrc}" style="width: 80px; height: 100px; object-fit: cover; border-radius: 4px;">
+                            <div style="flex-grow: 1; text-align: left;">
+                                <h3 style="font-family: 'Cormorant Garamond', serif; margin: 0; font-size: 1.4rem;">${item.name}</h3>
+                                <p style="margin: 2px 0; font-family: 'Montserrat'; font-size: 0.75rem; text-transform: uppercase; color: #888; letter-spacing: 1px;">Size: ${item.size || 'Classic'}</p>
+                                <p style="margin: 5px 0; color: #B8860B; font-weight: 600; font-family: 'Montserrat';">${item.price}</p>
+                            </div>
+                            <button onclick="removeItem(${index})" style="background: none; border: none; color: #cc0000; cursor: pointer; font-family: 'Montserrat'; font-size: 0.65rem; font-weight: 600; letter-spacing: 1px;">REMOVE</button>
+                        </div>
+                        ${noteHTML}
+                    `;
+                    container.appendChild(itemDiv);
+                    subtotal += parseFloat(item.price.replace('$', ''));
+                });
+
+                // --- CALCULATION LOGIC ---
+                let discountAmount = (discount > 0 && discount <= 1) ? (subtotal * discount) : discount;
+                const taxAmount = (subtotal - discountAmount) * TAX_RATE;
+                const finalTotal = subtotal - discountAmount + taxAmount + DELIVERY_FEE;
+
+                document.getElementById('display-subtotal').innerText = `$${subtotal.toFixed(2)}`;
+                document.getElementById('display-tax').innerText = `$${taxAmount.toFixed(2)}`;
+                document.getElementById('cart-total').innerText = `$${Math.max(0, finalTotal).toFixed(2)}`;
+                
+                if (discount > 0) {
+                    document.getElementById('discount-row').style.display = 'flex';
+                    document.getElementById('display-discount').innerText = `-$${discountAmount.toFixed(2)}`;
+                } else {
+                    document.getElementById('discount-row').style.display = 'none';
+                }
+
+            } else {
+                emptyMsg.style.display = 'block';
+                summary.style.display = 'none';
+                container.style.display = 'none';
+            }
+            updateCartCount();
+        }
+
+        function validateAndCheckout() {
+            const date = document.getElementById('delivery-date').value;
+            if (!date) {
+                alert("Please select a delivery date for your blooms.");
+                return;
+            }
+            localStorage.setItem('lastDeliveryDate', date);
+            window.location.href = 'success.html';
+        }
+
+        function applyPromo() {
+            const code = document.getElementById('promo-input').value.trim().toUpperCase();
+            const msg = document.getElementById('promo-msg');
+            const statusDiv = document.getElementById('promo-status');
+
+            if (code === "BLOOM20") {
+                discount = 0.20;
+                msg.innerText = "BLOOM20 Applied (-20%)";
+                statusDiv.style.display = "block";
+            } else if (code === "HABIBI10") {
+                discount = 10;
+                msg.innerText = "HABIBI10 Applied (-$10.00)";
+                statusDiv.style.display = "block";
+            } else {
+                alert("Invalid promo code.");
+                removePromo();
+            }
+            displayCart();
+        }
+
+        function removePromo() {
+            discount = 0;
+            document.getElementById('promo-input').value = "";
+            document.getElementById('promo-status').style.display = "none";
+            displayCart();
+        }
+
+        function removeItem(index) {
+            let cart = JSON.parse(localStorage.getItem('habibiCart')) || [];
+            cart.splice(index, 1);
+            localStorage.setItem('habibiCart', JSON.stringify(cart));
+            displayCart(); 
+        }
+
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('habibiCart')) || [];
+            const navLinks = document.querySelectorAll('.nav-links a, .navbar a');
+            navLinks.forEach(link => {
+                if (link.textContent.trim().toLowerCase().includes('bag')) {
+                    link.textContent = `Bag (${cart.length})`;
+                }
+            });
+        }
+
+        window.onload = function() {
+            displayCart();
+            setupDatePicker();
+        };
+    </script>
+</body>
+</html>

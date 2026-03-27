@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Your Bouquet | Habibi Flowers</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .size-btn {
+            padding: 12px;
+            border: 1px solid #ddd;
+            background: #fff;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-family: 'Montserrat';
+            transition: all 0.3s ease;
+        }
+        .size-btn.active {
+            border-color: #2F4F4F;
+            background: #2F4F4F;
+            color: white;
+        }
+    </style>
+</head>
+<body style="background-color: #fcfaf8;">
+
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="logo-banner">
+                <a href="index.html"><img src="logo.png" alt="Habibi Flowers"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop Collection</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html" style="color: #B8860B; font-weight: 600;">Bag</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container" style="max-width: 1200px; margin: 80px auto; padding: 0 20px;">
+        <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: start;">
+            
+            <div style="position: sticky; top: 120px;">
+                <div style="overflow: hidden; border-radius: 8px; background: #fff; padding: 10px; box-shadow: 0 20px 40px rgba(0,0,0,0.03);">
+                    <img id="main-product-image" src="b1.png" alt="Selected Bouquet" style="width: 100%; height: auto; display: block; object-fit: cover; aspect-ratio: 4/5;">
+                </div>
+            </div>
+
+            <div style="padding-top: 20px;">
+                <nav style="margin-bottom: 20px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.5;">
+                    Shop / Collection / <span id="breadcrumb-name">Arrangement</span>
+                </nav>
+
+                <h1 id="p-title" style="font-family: 'Cormorant Garamond', serif; font-size: 4rem; line-height: 0.9; margin-bottom: 15px; font-weight: 400;">Signature Peonies</h1>
+                
+                <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 30px;">
+                    <span id="p-price" style="font-family: 'Montserrat', sans-serif; font-size: 1.8rem; font-weight: 500; color: #2F4F4F;">$85.00</span>
+                    <span style="height: 1px; flex-grow: 1; background: #eee;"></span>
+                </div>
+                
+                <p id="p-desc" style="font-family: 'Montserrat', sans-serif; font-size: 1rem; line-height: 1.8; color: #555; margin-bottom: 40px;">
+                    Our premier selection of soft pink peonies, hand-tied with silk ribbon and prepared for local delivery.
+                </p>
+
+                <form id="order-form" style="display: flex; flex-direction: column; gap: 30px;">
+                    <div>
+                        <label style="display: block; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Size Preference</label>
+                        <div id="size-picker" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
+                            <button type="button" class="size-btn active" data-size="Classic" data-extra="0">Classic</button>
+                            <button type="button" class="size-btn" data-size="Deluxe" data-extra="25">Deluxe</button>
+                            <button type="button" class="size-btn" data-size="Grand" data-extra="50">Grand</button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label style="display: block; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Handwritten Note (Optional)</label>
+                        <textarea id="p-note" placeholder="Write your message here..." rows="4" style="width: 100%; padding: 15px; border: 1px solid #eee; border-radius: 4px; font-family: 'Montserrat', sans-serif; resize: none; background: #fff;"></textarea>
+                    </div>
+
+                    <button type="button" onclick="addToCart()" style="width: 100%; padding: 22px; background-color: #2F4F4F; color: white; border: none; font-family: 'Montserrat', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 10px 20px rgba(47, 79, 79, 0.2); border-radius: 4px;">
+                        Add to Bouquet Bag
+                    </button>
+                </form>
+
+                <div style="margin-top: 50px; border-top: 1px solid #eee; padding-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-size: 0.8rem; opacity: 0.7;">
+                    <div>✓ Freshness Guaranteed</div>
+                    <div>✓ Sustainable Packaging</div>
+                    <div>✓ Same-Day Delivery</div>
+                    <div>✓ Hand-Crafted in City</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const productData = {
+            "1": { name: "Signature Peonies", price: "$85.00", desc: "Our premier selection of soft pink peonies, hand-tied with silk ribbon." },
+            "2": { name: "Floral Votives", price: "$35.00", desc: "A charming duo of petite arrangements in clear glass votives." },
+            "3": { name: "Lavender Mist", price: "$70.00", desc: "Calming lavender paired with white roses for a peaceful aesthetic." },
+            "4": { name: "Sunrise Vase", price: "$95.00", desc: "Bright oranges and yellows to mimic the first light of day." },
+            "5": { name: "Classic Crimson", price: "$80.00", desc: "Deep red velvet roses for the ultimate romantic gesture." },
+            "6": { name: "Wild Spirit", price: "$65.00", desc: "An untamed mix of field flowers and eucalyptus greens." },
+            "7": { name: "Pastel Dreams", price: "$75.00", desc: "Soft hues of cream, lilac, and mint for a dreamy display." },
+            "8": { name: "Garden Walk", price: "$90.00", desc: "Feels like it was just plucked from an English cottage garden." },
+            "9": { name: "The Habibi Box", price: "$110.00", desc: "Our luxury preserved roses presented in a signature velvet box." },
+            "10": { name: "Ethereal White", price: "$85.00", desc: "All-white lilies and hydrangeas for a sophisticated look." },
+            "11": { name: "Peach Sorbet", price: "$70.00", desc: "Sweet peach ranunculus and garden roses for a summer vibe." },
+            "12": { name: "Majestic Bloom", price: "$120.00", desc: "Our largest arrangement, featuring king proteas and exotic fillers." }
+        };
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const pid = urlParams.get('id');
+        const pimg = urlParams.get('img');
+
+        let basePrice = 0;
+        let currentSelectedSize = "Classic";
+
+        // Initial Load Logic
+        if (pid && productData[pid]) {
+            document.getElementById('p-title').innerText = productData[pid].name;
+            document.getElementById('breadcrumb-name').innerText = productData[pid].name;
+            document.getElementById('p-price').innerText = productData[pid].price;
+            document.getElementById('p-desc').innerText = productData[pid].desc;
+            basePrice = parseFloat(productData[pid].price.replace('$', ''));
+        }
+        if (pimg) {
+            document.getElementById('main-product-image').src = pimg;
+        }
+
+        // --- SIZE PICKER LOGIC ---
+        const sizeButtons = document.querySelectorAll('.size-btn');
+        sizeButtons.forEach(btn => {
+            btn.onclick = function() {
+                // Toggle UI
+                sizeButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                // Update Data
+                currentSelectedSize = this.getAttribute('data-size');
+                const extra = parseFloat(this.getAttribute('data-extra'));
+                const newPrice = basePrice + extra;
+                document.getElementById('p-price').innerText = `$${newPrice.toFixed(2)}`;
+            };
+        });
+
+        // --- CART LOGIC ---
+        function addToCart() {
+            const name = document.getElementById('p-title').innerText;
+            const price = document.getElementById('p-price').innerText;
+            const image = document.getElementById('main-product-image').getAttribute('src');
+            const note = document.getElementById('p-note').value;
+
+            const product = { 
+                name: name, 
+                price: price, 
+                image: image, 
+                size: currentSelectedSize,
+                note: note,
+                quantity: 1 
+            };
+
+            let cart = JSON.parse(localStorage.getItem('habibiCart')) || [];
+            cart.push(product);
+            localStorage.setItem('habibiCart', JSON.stringify(cart));
+
+            window.location.href = 'cart.html';
+        }
+
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('habibiCart')) || [];
+            const totalItems = cart.length;
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            navLinks.forEach(link => {
+                if (link.textContent.trim().toLowerCase().includes('bag')) {
+                    link.textContent = `Bag (${totalItems})`;
+                }
+            });
+        }
+
+        window.onload = updateCartCount;
+    </script>
+</body>
+</html>

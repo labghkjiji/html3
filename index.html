@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habibi Flowers | Bespoke Floral Design</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="main-header">
+    <nav class="navbar">
+        <div class="logo-banner">
+            <a href="index.html">
+                <img src="logo.png" alt="Habibi Flowers">
+            </a>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop Collection</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="cart.html" style="color: #B8860B; font-weight: 600;">Bag</a></li>
+        </ul>
+    </nav>
+</header>
+
+    <main>
+        <section class="hero-section">
+            <img src="a1.png" alt="Woman giving a beautiful bouquet of flowers" class="hero-image">
+            <div class="hero-content">
+                <h1>Crafting Beauty, Delivering Joy</h1>
+                <p>Exquisite floral designs for every unforgettable moment.</p>
+                <a href="shop.html" class="btn btn-primary">Discover Our Collections</a>
+            </div>
+        </section>
+
+        <section class="about-us-section container">
+            <div class="about-content">
+                <h2>Our Philosophy: Blooms with Purpose</h2>
+                <p>At Habibi Flowers, we believe in the language of flowers. Each stem, each petal, is chosen with intention to convey your deepest sentiments.</p>
+                <a href="shop.html" class="btn btn-secondary">Explore Our Craftsmanship</a>
+            </div>
+            <div class="about-image-wrapper">
+                <img src="a2.png" alt="Beautiful Habibi Flowers cart with fresh blooms">
+            </div>
+        </section>
+
+        <section class="featured-products-section container">
+            <h2 style="text-align: center; margin-bottom: 40px;">Our Signature Collections</h2>
+            <div class="product-grid">
+                
+                <div class="product-card">
+                    <img src="b1.png" alt="The Classic Peony Bouquet">
+                    <div class="product-card-content">
+                        <h3>Signature Peonies</h3>
+                        <p>$85.00</p>
+                        <a href="product.html?id=1&img=b1.png" class="btn btn-primary" style="font-size: 0.8em; padding: 10px 20px;">View Details</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="b4.png" alt="Golden Hour Vase Arrangement">
+                    <div class="product-card-content">
+                        <h3>Sunrise Vase</h3>
+                        <p>$95.00</p>
+                        <a href="product.html?id=4&img=b4.png" class="btn btn-primary" style="font-size: 0.8em; padding: 10px 20px;">View Details</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="b5.png" alt="Midnight Velvet Luxury Bouquet">
+                    <div class="product-card-content">
+                        <h3>Classic Crimson</h3>
+                        <p>$80.00</p>
+                        <a href="product.html?id=5&img=b5.png" class="btn btn-primary" style="font-size: 0.8em; padding: 10px 20px;">View Details</a>
+                    </div>
+                </div>
+
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="shop.html" class="btn btn-primary">View All Bouquets</a>
+            </div>
+        </section>
+
+        <section class="call-to-action-section">
+            <div class="cta-content container">
+                <h2>Ready for Your Habibi Moment?</h2>
+                <p>Let us craft the perfect floral expression for your next special occasion.</p>
+                <a href="contact.html" class="btn btn-primary">Contact Us Today</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content container">
+            <div class="footer-logo">Habibi Flowers</div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="contact.html">Contact & Reviews</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Get in Touch</h4>
+                <p>Email: info@habibiflowers.com</p>
+                <p>Phone: (123) 456-7890</p>
+            </div>
+            <div class="footer-social">
+                <h4>Connect</h4>
+                <a href="#">Instagram</a>
+                <a href="#">Facebook</a>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <p>&copy; 2026 Habibi Flowers. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function updateCartCount() {
+            // Get the list of items from localStorage
+            const cart = JSON.parse(localStorage.getItem('habibiCart')) || [];
+            
+            // Calculate total items (sum of quantities)
+            const totalItems = cart.reduce((total, item) => total + (item.quantity || 1), 0);
+
+            // Find all navigation links
+            const navLinks = document.querySelectorAll('.nav-links a, .navbar a');
+            
+            navLinks.forEach(link => {
+                // Check if the link text is "Bag" (case insensitive)
+                if (link.textContent.trim().toLowerCase() === 'bag' || link.textContent.includes('Bag (')) {
+                    link.textContent = `Bag (${totalItems})`;
+                }
+            });
+        }
+
+        // Initialize on load
+        window.onload = updateCartCount;
+        
+        // Listen for storage changes in case user has multiple tabs open
+        window.addEventListener('storage', updateCartCount);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Reviews | Habibi Flowers</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .boxy-option { cursor: pointer; width: 100%; }
+        .boxy-option input { display: none; }
+        .boxy-option span {
+            display: block; padding: 15px; border: 1px solid #eee;
+            text-align: center; font-family: 'Montserrat'; font-size: 0.75rem;
+            text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease;
+            background: #fff; color: #666; border-radius: 4px;
+        }
+        .boxy-option input:checked + span { background-color: #2F4F4F; color: white; border-color: #2F4F4F; }
+        .boxy-option span:hover { border-color: #2F4F4F; }
+        
+        .habibi-input {
+            width: 100%; padding: 15px; border: 1px solid #eee;
+            font-family: 'Montserrat'; border-radius: 4px; outline: none; transition: border-color 0.3s;
+        }
+        .habibi-input:focus { border-color: #2F4F4F; }
+
+        .review-box {
+            background: #fff; padding: 40px; border-radius: 4px;
+            text-align: left; border: 1px solid #f2f2f2;
+            transition: opacity 0.8s ease;
+        }
+    </style>
+</head>
+<body style="background-color: #fcfaf8;">
+
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="logo-banner">
+                <a href="index.html"><img src="logo.png" alt="Habibi Flowers"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop Collection</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html" style="color: #B8860B; font-weight: 600;">Bag</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container" style="max-width: 1200px; margin: 80px auto; padding: 0 20px;">
+        
+        <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; margin-bottom: 120px;">
+            <div style="position: sticky; top: 120px;">
+                <nav style="margin-bottom: 20px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.5; font-family: 'Montserrat';">
+                    Habibi / Get In Touch
+                </nav>
+                <h1 style="font-family: 'Cormorant Garamond', serif; font-size: 4rem; line-height: 0.9; margin-bottom: 25px; font-weight: 400;">Connect with <br>our Studio</h1>
+                <p style="font-family: 'Montserrat', sans-serif; font-size: 1rem; line-height: 1.8; color: #555; margin-bottom: 40px; font-weight: 300;">
+                    Whether you are planning a grand wedding or simply wish to send a bespoke arrangement, our team is here to assist.
+                </p>
+                <div style="font-family: 'Montserrat'; font-size: 0.8rem; letter-spacing: 1px; line-height: 2.2; opacity: 0.8;">
+                    <p><strong>EMAIL:</strong> HELLO@HABIBIFLOWERS.COM</p>
+                    <p><strong>PHONE:</strong> (123) 456-7890</p>
+                    <p><strong>STUDIO:</strong> 123 BLOOM ST, CITY GARDENS</p>
+                </div>
+            </div>
+
+            <div style="background: white; padding: 50px; border-radius: 8px; box-shadow: 0 20px 40px rgba(0,0,0,0.03);">
+                <form style="display: flex; flex-direction: column; gap: 30px;">
+                    <div>
+                        <label style="display: block; font-family: 'Montserrat'; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Your Name</label>
+                        <input type="text" placeholder="Full Name" class="habibi-input">
+                    </div>
+                    <div>
+                        <label style="display: block; font-family: 'Montserrat'; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Inquiry Type</label>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                            <label class="boxy-option"><input type="radio" name="inquiry" value="daily" checked><span>Daily Bouquet</span></label>
+                            <label class="boxy-option"><input type="radio" name="inquiry" value="wedding"><span>Wedding</span></label>
+                            <label class="boxy-option"><input type="radio" name="inquiry" value="event"><span>Events</span></label>
+                            <label class="boxy-option"><input type="radio" name="inquiry" value="other"><span>Other</span></label>
+                        </div>
+                    </div>
+                    <div>
+                        <label style="display: block; font-family: 'Montserrat'; font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Message</label>
+                        <textarea placeholder="Tell us about your floral needs..." rows="5" class="habibi-input" style="resize: none;"></textarea>
+                    </div>
+                    <button type="submit" style="width: 100%; padding: 22px; background-color: #2F4F4F; color: white; border: none; font-family: 'Montserrat'; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; cursor: pointer; transition: 0.3s; box-shadow: 0 10px 20px rgba(47,79,79,0.15); border-radius: 4px;">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div style="text-align: center; border-top: 1px solid #eee; padding-top: 80px; margin-bottom: 40px;">
+            <h2 style="font-family: 'Cormorant Garamond'; font-size: 3rem; margin-bottom: 60px; font-weight: 400;">Kind Words</h2>
+            
+            <div id="reviews-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <div class="review-box" id="box-0">
+                    <div style="color: #B8860B; font-size: 0.7rem; margin-bottom: 15px; letter-spacing: 3px;">★★★★★</div>
+                    <p class="rev-text" style="font-family: 'Cormorant Garamond'; font-size: 1.4rem; font-style: italic; line-height: 1.4; color: #444; min-height: 100px;"></p>
+                    <p class="rev-author" style="margin-top: 25px; font-family: 'Montserrat'; font-size: 0.7rem; font-weight: 600; letter-spacing: 2px; color: #B8860B;"></p>
+                </div>
+                <div class="review-box" id="box-1">
+                    <div style="color: #B8860B; font-size: 0.7rem; margin-bottom: 15px; letter-spacing: 3px;">★★★★★</div>
+                    <p class="rev-text" style="font-family: 'Cormorant Garamond'; font-size: 1.4rem; font-style: italic; line-height: 1.4; color: #444; min-height: 100px;"></p>
+                    <p class="rev-author" style="margin-top: 25px; font-family: 'Montserrat'; font-size: 0.7rem; font-weight: 600; letter-spacing: 2px; color: #B8860B;"></p>
+                </div>
+                <div class="review-box" id="box-2">
+                    <div style="color: #B8860B; font-size: 0.7rem; margin-bottom: 15px; letter-spacing: 3px;">★★★★★</div>
+                    <p class="rev-text" style="font-family: 'Cormorant Garamond'; font-size: 1.4rem; font-style: italic; line-height: 1.4; color: #444; min-height: 100px;"></p>
+                    <p class="rev-author" style="margin-top: 25px; font-family: 'Montserrat'; font-size: 0.7rem; font-weight: 600; letter-spacing: 2px; color: #B8860B;"></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer style="margin-top: 100px; padding: 60px 0; background: #fff; border-top: 1px solid #eee; text-align: center;">
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin-bottom: 10px;">Habibi Flowers</h3>
+        <p style="font-family: 'Montserrat'; font-size: 0.7rem; letter-spacing: 1px; opacity: 0.5;">&copy; 2026 BESPOKE FLORAL DESIGN. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script>
+        const allReviews = [
+            { text: "The most exquisite floral experience I have ever had. The attention to detail is unmatched.", author: "SOPHIE L." },
+            { text: "They brought my wedding vision to life in a way I never thought possible. Simply breathtaking.", author: "MARCUS G." },
+            { text: "Every stem feels intentional. They don't just sell flowers; they sell a feeling.", author: "ELENA W." },
+            { text: "The 'Wild Spirit' arrangement felt like it was plucked from a fairytale garden.", author: "ISABELLA H." },
+            { text: "Exquisite packaging and even better flowers. You can tell they care about the details.", author: "CLARA V." },
+            { text: "Ordered a last-minute gift and they handled it with such grace and speed. 10/10.", author: "JULIAN R." },
+            { text: "The fragrance from the Lavender Mist bouquet filled my entire home.", author: "OLIVIA P." },
+            { text: "Elegant, sophisticated, and worth every penny. The Grand size is massive!", author: "BEATRICE S." },
+            { text: "Finally, a florist that understands modern aesthetics. Perfectly curated.", author: "NATHAN D." },
+            { text: "The website was so easy to use, and the delivery was perfectly on time.", author: "AALIYAH J." },
+            { text: "Simply the best floral experience in the city. The peonies were like clouds.", author: "GRACE K." },
+            { text: "Customer service was so helpful when I needed to change my delivery address.", author: "ROBERT S." },
+            { text: "My fiancé was speechless. The Habibi Box is the ultimate romantic gesture.", author: "LIAM G." },
+            { text: "I love the sustainable packaging. It feels good to buy eco-conscious.", author: "MIA V." },
+            { text: "The Signature Peonies were the highlight of my anniversary. Breathtaking.", author: "SARAH M." },
+            { text: "A true artist's touch. Each bouquet is a masterpiece of color and texture.", author: "DAVID P." },
+            { text: "The flowers stayed fresh for over two weeks! Outstanding quality.", author: "LAURA B." },
+            { text: "The perfect centerpiece for our gala. Everyone was asking for the florist.", author: "SIMON T." },
+            { text: "Fast delivery and the most beautiful tulips I've ever seen.", author: "EMMA F." },
+            { text: "Sophisticated arrangements that really stand out from typical flower shops.", author: "RACHEL W." },
+            { text: "A seamless experience from ordering to the beautiful surprise at the door.", author: "CHRIS M." },
+            { text: "The color palette was so unique. I've never seen anything like it.", author: "ANNA L." },
+            { text: "They make the most beautiful sympathy arrangements. Very respectful.", author: "THOMAS H." },
+            { text: "I treat myself to their weekly subscription. It changes my whole mood.", author: "KAREN O." },
+            { text: "Simply stunning. The floral scent greeted me before I even opened the box.", author: "JULIE Q." },
+            { text: "The bridal bouquet was so light and airy, exactly what I wanted.", author: "MEGAN R." },
+            { text: "Fantastic attention to color theory. Their bold mixes are incredible.", author: "LEO N." },
+            { text: "Their shop is a hidden gem. Best orchids in the city, hands down.", author: "SANDRA E." },
+            { text: "Professional, creative, and reliable. Habibi is my go-to for corporate events.", author: "VICTORIA G." },
+            { text: "The seasonal collection is always surprising and fresh. Never gets old.", author: "BRIAN K." },
+            { text: "Their dried flower arrangements are just as beautiful as the fresh ones.", author: "ZOEY X." },
+            { text: "Incredible service. They went above and beyond for my mother's birthday.", author: "ANDREW C." },
+            { text: "Luxury at its finest. The velvet ribbon on the box is a gorgeous touch.", author: "PATRICIA J." },
+            { text: "A breath of fresh air in the floral industry. So modern and chic.", author: "FELIX S." },
+            { text: "The flowers arrived perfectly hydrated. You can tell they use top-tier methods.", author: "HEATHER U." },
+            { text: "The best gift I've ever received. Every bloom was absolutely perfect.", author: "DIANA V." },
+            { text: "I've tried many florists, but Habibi's style is unmatched. So romantic.", author: "GARY B." },
+            { text: "The mini bouquets are perfect for desk decor. I buy them every Monday.", author: "TARA L." },
+            { text: "Their social media doesn't even do them justice. Even better in person.", author: "JESSICA W." },
+            { text: "A true five-star experience from start to finish. Highly recommend.", author: "PHILLIP D." },
+            { text: "They handled our complex event floral needs with absolute ease.", author: "CATHERINE A." },
+            { text: "The stems are so thick and healthy. These flowers are built to last.", author: "STEVEN M." },
+            { text: "Every arrangement tells a story. Truly the most poetic flowers I've found.", author: "LAUREN E." },
+            { text: "Perfect for the modern romantic. Minimalist but deeply impactful.", author: "OSCAR I." },
+            { text: "My go-to for every occasion. They never miss a beat.", author: "NANCY P." },
+            { text: "The eucalyptus in the bouquet was so fragrant and fresh.", author: "KEVIN T." },
+            { text: "They made my small intimate dinner feel like a royal event.", author: "HANA S." },
+            { text: "Stunning, ethereal, and magical. Habibi is in a league of its own.", author: "AMBER G." },
+            { text: "The customer portal makes re-ordering so simple. Love the tech!", author: "JUSTIN R." },
+            { text: "A masterclass in floral design. I’m a customer for life.", author: "MONICA F." }
+        ];
+
+        function shuffle(array) { return array.sort(() => Math.random() - 0.5); }
+
+        function initReviews() {
+            const shuffled = shuffle([...allReviews]);
+            const boxes = document.querySelectorAll('.review-box');
+            boxes.forEach((box, i) => {
+                box.querySelector('.rev-text').innerText = `"${shuffled[i].text}"`;
+                box.querySelector('.rev-author').innerText = `— ${shuffled[i].author}`;
+            });
+        }
+
+        function cycleBox(index) {
+            const box = document.getElementById(`box-${index}`);
+            box.style.opacity = '0';
+            setTimeout(() => {
+                const newRev = allReviews[Math.floor(Math.random() * allReviews.length)];
+                box.querySelector('.rev-text').innerText = `"${newRev.text}"`;
+                box.querySelector('.rev-author').innerText = `— ${newRev.author}`;
+                box.style.opacity = '1';
+            }, 800);
+        }
+
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('habibiCart')) || [];
+            document.querySelectorAll('.nav-links a, .navbar a').forEach(link => {
+                if (link.textContent.trim().toLowerCase().includes('bag')) {
+                    link.textContent = `Bag (${cart.length})`;
+                }
+            });
+        }
+
+        window.onload = () => {
+            updateCartCount();
+            initReviews();
+            setInterval(() => cycleBox(0), 7000);
+            setInterval(() => cycleBox(1), 10000);
+            setInterval(() => cycleBox(2), 13000);
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Collections | Habibi Flowers</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="logo-banner">
+                <a href="index.html"><img src="logo.png" alt="Habibi Flowers"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop Collection</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="cart.html" style="color: #B8860B; font-weight: 600;">Bag</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div style="text-align: center; padding: 60px 0 20px;">
+            <h1 style="font-size: 3rem;">Full Collection</h1>
+            <p style="letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem; color: #B8860B;">12 Hand-Crafted Arrangements</p>
+        </div>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <a href="product.html?id=1&img=b1.png"><img src="b1.png" alt="Flowers">
+                <div class="product-card-content"><h3>Signature Peonies</h3><p class="price">$85.00</p></div></a>
+            </div>
+            <div class="product-card">
+                <a href="product.html?id=2&img=b2.png"><img src="b2.png" alt="Flowers">
+                <div class="product-card-content"><h3>Floral Votives</h3><p class="price">$35.00</p></div></a>
+            </div>
+            <div class="product-card">
+                <a href="product.html?id=3&img=b3.png"><img src="b3.png" alt="Flowers">
+                <div class="product-card-content"><h3>Lavender Mist</h3><p class="price">$70.00</p></div></a>
+            </div>
+            <div class="product-card">
+                <a href="product.html?id=4&img=b4.png"><img src="b4.png" alt="Flowers">
+                <div class="product-card-content"><h3>Sunrise Vase</h3><p class="price">$95.00</p></div></a>
+            </div>
+            <div class="product-card">
+                <a href="product.html?id=5&img=b5.png"><img src="b5.png" alt="Flowers">
+                <div class="product-card-content"><h3>Classic Crimson</h3><p class="price">$80.00</p></div></a>
+            </div>
+            <div class="product-card">
+                <a href="product.html?id=6&img=b6.png"><img src="b6.png" alt="Flowers">
+                <div class="product-card-content"><h3>Wild Spirit</h3><p class="price">$65.00</p></div></a>
+            </div>
+            <div class="product-card">
+                <a href="product.html?id=7&img=b7.png"><img src="b7.png" alt="Flowers">
+                <div class="product-card-content"><h3>Pastel Dreams</h3><p class="price">$75.00</p></div></a>
+            </div>
+            <div class="product-card">
+                <a href="product.html?id=8&img=b8.png"><img src="b8.png" alt="Flowers">
+                <div class="product-card-content"><h3>Garden Walk</h3><p class="price">$90.00</p></div></a>
+            </div>
+            <div class="product-card">
+                <a href="product.html?id=9&img=b9.png"><img src="b9.png" alt="Flowers">
+                <div class="product-card-content"><h3>The Habibi Box</h3><p class="price">$110.00</p></div></a>
+            </div>
+            <div class="product-card">
+                <a href="product.html?id=10&img=b10.png"><img src="b10.png" alt="Flowers">
+                <div class="product-card-content"><h3>Ethereal White</h3><p class="price">$85.00</p></div></a>
+            </div>
+            <div class="product-card">
+                <a href="product.html?id=11&img=b11.png"><img src="b11.png" alt="Flowers">
+                <div class="product-card-content"><h3>Peach Sorbet</h3><p class="price">$70.00</p></div></a>
+            </div>
+            <div class="product-card">
+                <a href="product.html?id=12&img=b12.png"><img src="b12.png" alt="Flowers">
+                <div class="product-card-content"><h3>Majestic Bloom</h3><p class="price">$120.00</p></div></a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function updateCartCount() {
+            // Get the list of items from localStorage
+            const cart = JSON.parse(localStorage.getItem('habibiCart')) || [];
+            
+            // Calculate total quantity of all items in the bag
+            const totalItems = cart.reduce((total, item) => total + (item.quantity || 1), 0);
+
+            // Find all links in the navigation
+            const navLinks = document.querySelectorAll('.nav-links a, .navbar a');
+            
+            navLinks.forEach(link => {
+                // Check for the word "Bag" regardless of current text
+                if (link.textContent.trim().toLowerCase() === 'bag' || link.textContent.includes('Bag (')) {
+                    link.textContent = `Bag (${totalItems})`;
+                }
+            });
+        }
+
+        // Initialize on load
+        window.onload = updateCartCount;
+        
+        // Update if user adds an item in another tab
+        window.addEventListener('storage', updateCartCount);
+    </script>
+</body>
+</html>
